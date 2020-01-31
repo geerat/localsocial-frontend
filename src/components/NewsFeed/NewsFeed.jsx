@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react'
-import PropTypes from 'prop-types'
-import NewsFeedItem from '../NewsFeedItem/NewsFeedItem'
-import PostBox from '../PostBox/PostBox'
-import { Button } from '@material-ui/core'
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import NewsFeedItem from '../NewsFeedItem/NewsFeedItem';
+import PostBox from '../PostBox/PostBox';
+import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
-
-
+import AntPost from '../AntPost/AntPost';
 
 export default function NewsFeed(props) {
 
@@ -19,7 +18,13 @@ export default function NewsFeed(props) {
     })
 
     const messages = props.posts.map((post) => {
-        return <NewsFeedItem message={post.message} username={post.username} timestamp={post.timestamp} />
+        return (
+            <div style={{padding: "0.8em", alignContent: 'center'}}>
+                
+                <AntPost message={post.message} username={post.username} timestamp={post.timestamp} />
+            </div>
+        )
+
     })
 
     const login = () => {
@@ -31,7 +36,12 @@ export default function NewsFeed(props) {
             return (
                 <>
                     <PostBox handlePost={props.handlePost} />
-                    {messages}
+
+                    <div style={{flexFlow: "column nowrap", justifyContent: "flex-start", alignItems: 'center', overflow: 'scroll', height: '75vh'}}>
+                            {messages}
+                            <Button onClick={props.getMorePosts}>More posts</Button>
+                    </div>
+                    
                 </>
             )
         } else {
@@ -56,5 +66,6 @@ NewsFeed.propTypes = {
     getPosts: PropTypes.func,
     posts: PropTypes.array,
     auth: PropTypes.bool,
-    handlePost: PropTypes.func
+    handlePost: PropTypes.func,
+    getMorePosts: PropTypes.func
 }

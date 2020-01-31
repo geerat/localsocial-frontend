@@ -10,7 +10,7 @@ export default function LoginPageContainer(props) {
 
     async function login(username, password) {
     
-        const response = await fetch("http://localhost:8080/api/login",
+        const response = await fetch("http://10.10.0.49:8080/api/login",
         {
             method: 'POST',
             //mode:'no-cors',
@@ -27,8 +27,8 @@ export default function LoginPageContainer(props) {
         const body = await response.json();
 
         if(body.key === "success") {
-            props.setAuth(true);
             props.setUsername(username);
+            props.setAuth(true);
             history.push('/home');
 
         } else {

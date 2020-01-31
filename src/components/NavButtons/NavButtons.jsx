@@ -4,18 +4,29 @@ import { Button } from '@material-ui/core'
 
 export default function NavButtons(props) {
 
+    const logout = () => {
+        props.setAuth(false);
+        props.setUsername('');
+    }
 
-    if(props.auth) {
+    if(props.auth() === "true" && props.authBool) {
+        console.log(`NAV BUTTON ${props.auth()}`);
+        console.log(`NavButtons thinks username is: ${props.username()}`)
         return (
             <>
-                <h1>Hello, {props.username}</h1>
+                <h3 style={{color: 'white'}}>Hello, {props.username()}!  </h3>
+                <Button onClick={logout} variant="contained" color="primary">Logout</Button>
             </>
         )
     } else {
         return (
             <>
-                <Button onClick={goToLogin}>Log In</Button>
-                <Button onClick={goToSignUp}>Sign Up</Button>
+                <div style={{padding: '0.5em'}}>
+                    <Button onClick={goToLogin} variant="contained" color="primary">Log In</Button>
+                </div>
+                <div style={{padding: '0.5em'}}>
+                    <Button onClick={goToSignUp} variant="contained" color="primary">Sign Up</Button>
+                </div>
             </>
         )
     }
@@ -32,6 +43,9 @@ function goToSignUp() {
 }
 
 NavButtons.propTypes = {
-    auth: PropTypes.bool,
-    username: PropTypes.string
+    auth: PropTypes.func,
+    username: PropTypes.func,
+    setUsername: PropTypes.func,
+    setAuth: PropTypes.func,
+    authBool: PropTypes.bool
 }
