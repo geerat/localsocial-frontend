@@ -10,19 +10,17 @@ export default function SignUpForm(props) {
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
-        console.log("usename: " + username);
     }
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
-        console.log("password: " + password);
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(`username: ${username}, password: ${password}`)
         props.handleSignUp(username, password);
     }
+    
     return (
         <>
             <Form onSubmit={handleSubmit} >

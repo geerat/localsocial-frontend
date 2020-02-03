@@ -15,7 +15,7 @@ export default function HomePageContainer(props) {
     
 
     useEffect(() => {
-        console.log("jome page effect")
+        console.log("home page effect")
         if(!postStatus) {
             getAllPosts();
             setPostStatus(true);
@@ -32,7 +32,7 @@ export default function HomePageContainer(props) {
 
     async function getAllPosts() {
     
-        const response = await fetch(`http://10.10.0.49:8080/api/posts?start=${start}&end=${end}`,
+        const response = await fetch(`http://10.10.0.49:8080/api/posts?start=${start}&end=${end}&username=${props.username()}`,
         {
             method: 'GET',
             headers: {
@@ -86,7 +86,7 @@ export default function HomePageContainer(props) {
 
     return (
         <>
-            <NewsFeed auth={props.auth} getPosts={getAllPosts} posts={posts} handlePost={post} getMorePosts={getMorePosts}/>
+            <NewsFeed refreshPosts={getAllPosts} username={props.username} auth={props.auth} getPosts={getAllPosts} posts={posts} handlePost={post} getMorePosts={getMorePosts}/>
         </>
     )
 }

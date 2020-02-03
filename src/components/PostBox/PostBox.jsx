@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Avatar } from 'antd';
 import PropTypes from 'prop-types'
 import { Card, Typography } from '@material-ui/core';
 
@@ -27,10 +27,18 @@ export default function PostBox(props) {
                         </Typography>
                     </div>
                     <Form onSubmit={handleSubmit} >
-                        <div style={{paddingLeft: "2em", paddingRight: '2em'}}>
-                            <Form.Item>
-                                <Input placeholder="Write a post!" value={post} onChange={handleChange} />
-                            </Form.Item>
+                        <div style={{paddingLeft: "2em", paddingRight: '2em', flexFlow: 'column nowrap', justifyContent: 'center', }}>
+                            
+                            <div style={{width: '50vw'}}>
+                                <Avatar style={{ backgroundColor: '#9C4532', verticalAlign: 'middle'}} size="large">
+                                    {props.username().charAt(0).toUpperCase()}
+                                </Avatar>
+                            </div>
+                            <div style={{width: '50vw'}}>
+                                <Form.Item>
+                                    <Input placeholder="Write a post!" value={post} onChange={handleChange} />
+                                </Form.Item>
+                            </div>
                         </div>
                         <div style={{paddingLeft: "2em", paddingRight: '2em'}}>
                             <Form.Item>
@@ -45,5 +53,6 @@ export default function PostBox(props) {
 }
 
 PostBox.propTypes = {
-    handlePost: PropTypes.func
+    handlePost: PropTypes.func,
+    username: PropTypes.func
 }

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import NewsFeedItem from '../NewsFeedItem/NewsFeedItem';
 import PostBox from '../PostBox/PostBox';
 import { Button } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
@@ -21,7 +20,7 @@ export default function NewsFeed(props) {
         return (
             <div style={{padding: "0.8em", alignContent: 'center'}}>
                 
-                <AntPost message={post.message} username={post.username} timestamp={post.timestamp} />
+                <AntPost likeState={post.likeStatus} refreshPosts={props.refreshPosts} likeCount={post.likeCount} messageId={post.postId} message={post.message} currentUsername={props.username} username={post.username} likes={post.likes} timestamp={post.timestamp} />
             </div>
         )
 
@@ -35,7 +34,7 @@ export default function NewsFeed(props) {
         if(props.auth) {
             return (
                 <>
-                    <PostBox handlePost={props.handlePost} />
+                    <PostBox handlePost={props.handlePost} username={props.username}/>
 
                     <div style={{flexFlow: "column nowrap", justifyContent: "flex-start", alignItems: 'center', overflow: 'scroll', height: '75vh'}}>
                             {messages}
@@ -67,5 +66,7 @@ NewsFeed.propTypes = {
     posts: PropTypes.array,
     auth: PropTypes.bool,
     handlePost: PropTypes.func,
-    getMorePosts: PropTypes.func
+    getMorePosts: PropTypes.func,
+    username: PropTypes.func,
+    refreshPosts: PropTypes.func
 }
