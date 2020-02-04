@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Avatar } from 'antd';
 import PropTypes from 'prop-types'
-import { Card, Typography } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 
 export default function PostBox(props) {
 
@@ -20,11 +20,9 @@ export default function PostBox(props) {
     return (
         
             <Card>
-                <div style={{width: "100vw", position: "fixed", bottom: "0", height: '15vh' }}>
+                <div style={{width: "100vw", position: "fixed", bottom: "0"}}>
                     <Form onSubmit={handleSubmit} >
                         <div style={{paddingLeft: "2em", paddingRight: '2em', display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center' }}>
-                            
-
 
                             <div style={{paddingRight: '2em'}}>
                                 <Avatar style={{ backgroundColor: '#9C4532', verticalAlign: 'middle'}} size="large">
@@ -32,7 +30,7 @@ export default function PostBox(props) {
                                 </Avatar>
                             </div>
 
-                            <div style={{width: '60vw'}}>
+                            <div style={{width: '75vw'}}>
                                 <Form.Item>
                                     <Input placeholder="Write a post!" value={post} onChange={handleChange} />
                                 </Form.Item>

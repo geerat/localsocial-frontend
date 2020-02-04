@@ -7,7 +7,6 @@ export default function LoginForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
         console.log("usename: " + username);
@@ -24,6 +23,7 @@ export default function LoginForm(props) {
         props.handleLogin(username, password);
         setPassword("");
     }
+
     return (
         <>
             <Form onSubmit={handleSubmit}>
@@ -52,12 +52,6 @@ export default function LoginForm(props) {
         </>
     )
 }
-
-
-
-
-
-
 
 LoginForm.propTypes = {
     handleLogin: PropTypes.func

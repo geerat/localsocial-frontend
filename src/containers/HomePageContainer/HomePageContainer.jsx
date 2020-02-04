@@ -5,30 +5,23 @@ import {useHistory} from 'react-router-dom';
 import { notification, Icon } from 'antd';
 export default function HomePageContainer(props) {
 
-
     const [posts, setPosts] = useState([]);
     const [postStatus, setPostStatus] = useState(false);
     const [start, setStart] = useState(1); //currently this is static
     const [end, setEnd] = useState(20)
     const history = useHistory();
 
-    
-
     useEffect(() => {
-        console.log("home page effect")
         if(!postStatus) {
             getAllPosts();
             setPostStatus(true);
         }
 
         if(props.auth() === "false") {
-            console.log("moving to login")
             history.push('/login');
         }
         
     })
-
-
 
     async function getAllPosts() {
     
@@ -42,7 +35,6 @@ export default function HomePageContainer(props) {
         });
     
         const body = await response.json();
-        await console.log("getting posts");
         setPosts(body);
     }
 
@@ -52,16 +44,11 @@ export default function HomePageContainer(props) {
         getAllPosts();
     }
 
-
-
-
-
     async function post(message) {
     
-        const response = await fetch("http://10.10.0.49:8080/api/posts",
+        await fetch("http://10.10.0.49:8080/api/posts",
         {
             method: 'POST',
-            //mode:'no-cors',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'

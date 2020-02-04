@@ -50,12 +50,6 @@ export default function SignUpForm(props) {
     )
 }
 
-
-
-
-
-
-
 SignUpForm.propTypes = {
     handleSignUp: PropTypes.func
 }

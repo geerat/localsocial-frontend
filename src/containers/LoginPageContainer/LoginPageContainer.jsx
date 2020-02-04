@@ -45,9 +45,6 @@ export default function LoginPageContainer(props) {
         return "";
     }
 
-
-
-
     return (
         <>
             <div style={{display: 'flex', flexFlow: "row nowrap", justifyContent: "center", alignItems: "center", height: "100vh"}}>
@@ -66,9 +63,6 @@ export default function LoginPageContainer(props) {
         </>
     )
 }
-
-
-
 
 LoginPageContainer.propTypes = {
     setAuth: PropTypes.func,

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PostBox from '../PostBox/PostBox';
 import { Button } from '@material-ui/core';
@@ -7,18 +7,11 @@ import AntPost from '../AntPost/AntPost';
 
 export default function NewsFeed(props) {
 
-
     const history = useHistory();
-
-    useEffect(() => {
-      /* if(props.auth) {
-           props.getPosts();
-       } */
-    })
 
     const messages = props.posts.map((post) => {
         return (
-                <AntPost likeState={post.likeStatus} refreshPosts={props.refreshPosts} likeCount={post.likeCount} messageId={post.postId} message={post.message} currentUsername={props.username} username={post.username} likes={post.likes} timestamp={post.timestamp} />
+            <AntPost likeState={post.likeStatus} refreshPosts={props.refreshPosts} likeCount={post.likeCount} messageId={post.postId} message={post.message} currentUsername={props.username} username={post.username} likes={post.likes} timestamp={post.timestamp} />
         )
 
     })

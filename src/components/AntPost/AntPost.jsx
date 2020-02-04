@@ -5,32 +5,24 @@ import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
-
-
 const useStyles = makeStyles(theme => ({
     root: {
       display: 'flex',
       flexWrap: 'wrap',
       '& > *': {
         margin: theme.spacing(1),
-        width: theme.spacing(80),
-        height: theme.spacing(16),
       },
     },
   }));
 
-
 export default function AntPost(props) {
 
     const classes = useStyles();
-
     const [liked, setLiked] = useState(false);
-
-    
 
     async function likePost() {
     
-        const response = await fetch("http://10.10.0.49:8080/api/posts/" + props.messageId + "/likes",
+        await fetch("http://10.10.0.49:8080/api/posts/" + props.messageId + "/likes",
         {
             method: 'POST',
             //mode:'no-cors',
@@ -48,7 +40,6 @@ export default function AntPost(props) {
         props.refreshPosts();
 
     }
-
 
     const actions = [
         <span key="comment-basic-like">
@@ -68,7 +59,7 @@ export default function AntPost(props) {
         <div className={classes.root}>
 
             <Paper >
-                <div style={{padding: '1em'}}>
+                <div style={{padding: '1em', width: '85vw'}}>
                     <Comment
 
                         author = {props.username}
@@ -99,7 +90,6 @@ export default function AntPost(props) {
         </div>
     )
 }
-
 
 AntPost.propTypes = {
     username: PropTypes.string,

@@ -9,7 +9,6 @@ export default function SignUpPageContainer(props) {
 
     const history = useHistory();
 
-
     if(props.auth() === "true") {
         history.push('/')
     }
@@ -78,10 +77,6 @@ export default function SignUpPageContainer(props) {
         return "";
 
     }
-
-
-
-
     return (
         <>
             <div style={{display: 'flex', flexFlow: "row nowrap", justifyContent: "center", alignItems: "center", height: "100vh"}}>
@@ -101,9 +96,6 @@ export default function SignUpPageContainer(props) {
         </>
     )
 }
-
-
-
 
 SignUpPageContainer.propTypes = {
     auth: PropTypes.func
