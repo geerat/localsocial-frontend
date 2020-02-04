@@ -22,10 +22,11 @@ export default function LoginForm(props) {
         e.preventDefault();
         console.log(`username: ${username}, password: ${password}`)
         props.handleLogin(username, password);
+        setPassword("");
     }
     return (
         <>
-            <Form onSubmit={handleSubmit} >
+            <Form onSubmit={handleSubmit}>
 
             <div className="formItem" style={{paddingTop: "1.7em"}}>   
                 <Form.Item>
@@ -34,7 +35,7 @@ export default function LoginForm(props) {
             </div>
             <div className="formItem"> 
                 <Form.Item>
-                    <Input prefix={<Icon type="lock" />} placeholder="Password" onChange={handlePasswordChange}/>
+                    <Input value={password} prefix={<Icon type="lock" />} placeholder="Password" onChange={handlePasswordChange}/>
                 </Form.Item>
             </div>
             <div className="formItem"> 

@@ -3,6 +3,7 @@ import LoginForm from '../../components/LoginForm/LoginForm'
 import PropTypes from 'prop-types'
 import { Card, CardContent, Typography } from '@material-ui/core'
 import {useHistory} from 'react-router-dom'
+import { notification, Icon } from 'antd'
 
 export default function LoginPageContainer(props) {
 
@@ -29,13 +30,19 @@ export default function LoginPageContainer(props) {
         if(body.key === "success") {
             props.setUsername(username);
             props.setAuth(true);
-            history.push('/home');
+            history.push('/');
 
         } else {
+            notification.open({
+                message: `Sorry, try again!`,
+                top: '10vh',
+                description: 'Your username or password is incorrect!', 
+                icon: <Icon type="warning" />
+            })
             props.setAuth(false);
         }
 
-
+        return "";
     }
 
 

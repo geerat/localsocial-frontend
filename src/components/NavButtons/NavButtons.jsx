@@ -10,13 +10,19 @@ export default function NavButtons(props) {
     }
 
     if(props.auth() === "true" && props.authBool) {
-        console.log(`NAV BUTTON ${props.auth()}`);
-        console.log(`NavButtons thinks username is: ${props.username()}`)
+
         return (
-            <>
-                <h3 style={{color: 'white'}}>Hello, {props.username()}!  </h3>
-                <Button onClick={logout} variant="contained" color="primary">Logout</Button>
-            </>
+            <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'center', textAlign: 'center'}}>
+                
+                <div style={{paddingRight: '2em'}}>
+                    <h3 style={{color: 'white'}}>Hello, {props.username()}!</h3>
+                </div>
+
+                <div>
+                    <Button onClick={logout} variant="contained" color="primary">Logout</Button>
+                </div>
+
+            </div>
         )
     } else {
         return (

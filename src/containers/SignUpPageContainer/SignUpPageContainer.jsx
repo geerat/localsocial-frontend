@@ -11,7 +11,7 @@ export default function SignUpPageContainer(props) {
 
 
     if(props.auth() === "true") {
-        history.push('/home')
+        history.push('/')
     }
 
     async function signUp(username, password) {
@@ -23,7 +23,7 @@ export default function SignUpPageContainer(props) {
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
-            },
+            }, 
             body: JSON.stringify({
                 "username" : username,
                 "password": password
@@ -36,6 +36,7 @@ export default function SignUpPageContainer(props) {
             
             notification.open({
                 message: `Welcome, ${body.username}!`,
+                top: '10vh',
                 description: 'You can now login to make and view posts!', 
                 icon: <Icon type="user-add" />
             });
@@ -44,18 +45,37 @@ export default function SignUpPageContainer(props) {
         } else if(body.key === "username-taken") {
             notification.open({
                 message: `Sorry, username ${body.username} has been taken!`,
+                top: '10vh',
                 description: 'Please try a different username!', 
+                icon: <Icon type="warning" />
+            });
+
+        } else if (body.key === "username-invalid") {
+            notification.open({
+                message: `Your username must be greater than 5 characters!`,
+                top: '10vh',
+                description: 'Please try a different username!', 
+                icon: <Icon type="warning" />
+            });
+
+        } else if (body.key === "password-invalid") {
+            notification.open({
+                message: `Your password must be greater than 5 characters!`,
+                top: '10vh',
+                description: 'Please try a different password!', 
                 icon: <Icon type="warning" />
             });
 
         } else {
             notification.open({
+                top: '10vh',
                 message: `Sorry, there's an error`,
                 description: 'We were unable to sign you up!', 
                 icon: <Icon type="warning" />
             });
         }
 
+        return "";
 
     }
 

@@ -19,6 +19,7 @@ export default function SignUpForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.handleSignUp(username, password);
+        setPassword("");
     }
     
     return (
@@ -31,7 +32,7 @@ export default function SignUpForm(props) {
             </div>
             <div className="formItem"> 
                 <Form.Item>
-                    <Input prefix={<Icon type="lock" />} placeholder="Password" onChange={handlePasswordChange}/>
+                    <Input value={password} prefix={<Icon type="lock" />} placeholder="Password" onChange={handlePasswordChange}/>
                 </Form.Item>
             </div>
             <div className="formItem"> 

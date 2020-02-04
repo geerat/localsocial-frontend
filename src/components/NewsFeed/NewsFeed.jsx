@@ -18,10 +18,7 @@ export default function NewsFeed(props) {
 
     const messages = props.posts.map((post) => {
         return (
-            <div style={{padding: "0.8em", alignContent: 'center'}}>
-                
                 <AntPost likeState={post.likeStatus} refreshPosts={props.refreshPosts} likeCount={post.likeCount} messageId={post.postId} message={post.message} currentUsername={props.username} username={post.username} likes={post.likes} timestamp={post.timestamp} />
-            </div>
         )
 
     })
@@ -36,7 +33,7 @@ export default function NewsFeed(props) {
                 <>
                     <PostBox handlePost={props.handlePost} username={props.username}/>
 
-                    <div style={{flexFlow: "column nowrap", justifyContent: "flex-start", alignItems: 'center', overflow: 'scroll', height: '75vh'}}>
+                    <div style={{display:'flex', flexFlow: "column nowrap", justifyContent: "flex-start", alignItems: 'center', overflow: 'scroll', height: '75vh'}}>
                             {messages}
                             <Button onClick={props.getMorePosts}>More posts</Button>
                     </div>

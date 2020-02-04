@@ -26,7 +26,7 @@ export function Router() {
 
     const getAuthCookie = () => {
         console.log(`Getting auth: ${cookies.get('auth')}`);
-        setAuth(cookies.get('auth')); //
+        setAuth(cookies.get('auth'));
         return cookies.get('auth'); 
     }
 
@@ -42,7 +42,6 @@ export function Router() {
 
         return (
             <>
-
                 
                 <NavBar auth={getAuthCookie} authBool={auth} username={getUsernameCookie} setAuth={setAuthCookie} setUsername={setUsernameCookie}/>
                 
@@ -53,7 +52,7 @@ export function Router() {
                             <LoginPageContainer setAuth={setAuthCookie} setUsername={setUsernameCookie}/>
                         </Route>
                         
-                        <Route path="/home">
+                        <Route exact path="/">
                             <HomePageContainer username={getUsernameCookie} auth={getAuthCookie}/>
                         </Route>
 

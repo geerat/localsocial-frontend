@@ -52,7 +52,7 @@ export default function AntPost(props) {
 
     const actions = [
         <span key="comment-basic-like">
-          <Tooltip title="Like">
+          <Tooltip title={props.likeState ? "unlike" : "like"}>
             <Icon
               type="like"
               theme={props.likeState ? 'filled' : 'outlined'}
@@ -85,7 +85,7 @@ export default function AntPost(props) {
                         }
                         datetime = {
                             <Tooltip title={moment(props.timestamp, 'X').format('YYYY-MM-DD HH:mm:ss')}>
-                                <span>{moment(props.timestamp, 'X').fromNow()}</span>
+                                <span>posted {moment(props.timestamp, 'X').fromNow()}</span>
                             </Tooltip>
                         }
                         actions = {
