@@ -28,7 +28,7 @@ export default function NavButtons(props) {
         return (
             <>
                 <div style={{padding: '0.5em'}}>
-                    <Button onClick={goToLogin} variant="contained" color="primary"><p>Log In</p></Button>
+                    <Button onClick={goToLogin} variant="contained" color="primary">Log In</Button>
                 </div>
                 <div style={{padding: '0.5em'}}>
                     <Button onClick={goToSignUp} variant="contained" color="primary">Sign Up</Button>
